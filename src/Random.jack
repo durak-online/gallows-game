@@ -1,0 +1,15 @@
+class Random {
+    static int seed;
+    
+    function void setSeed(int newSeed) {
+        
+    }
+
+    function int rand() {
+        
+    }
+
+    function int randRange(int range) {
+        
+    }
+}

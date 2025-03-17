@@ -1,0 +1,24 @@
+class Letter {
+    field char letter;
+    field int x,y;
+
+    constructor Letter new(char _letter, int x, int y){
+
+    }
+
+    method void draw() {
+
+    }
+
+    method void cross() {
+
+    }
+
+    method void erase() {
+
+    }
+
+    method void dispose() {
+    
+    }
+}

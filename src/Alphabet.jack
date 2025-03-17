@@ -1,0 +1,24 @@
+class Alphabet {
+    field Array letters;
+
+    costructor Alphabet new() {
+
+    }
+
+    method void dispose() {
+    
+    }
+
+    method void draw() {
+
+    }
+
+    method void reset() {
+
+    }
+
+    method void crossOutLetter(char letter) {
+
+    }
+
+}

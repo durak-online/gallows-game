@@ -1,0 +1,23 @@
+class Gallows {
+    field int stage
+    costructor Gallows new(){
+
+    }
+
+    method void drawNextStage() {
+
+    }
+
+    method void drawStage1() {
+
+    }
+    //... TODO
+
+    method void reset() {
+        
+    }
+
+    method void dispose() {
+    
+    }
+}
