@@ -1,6 +1,6 @@
 class Gallows {
     field int stage
-    costructor Gallows new(){
+    constructor Gallows new(){
 
     }
 

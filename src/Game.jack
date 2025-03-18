@@ -1,6 +1,6 @@
 class Game{
     constructor Game new() {
-    
+        
     }
 
     method void startNewGame(){
