@@ -1,17 +1,79 @@
-class Game{
+class Game {
+    field Alphabet alphabet;
+    field Gallows gallows;
+    field boolean isGameOver;
+    field Array words;
+    field Array pressedLetters;
+    field int pressedLettersCount;
+
     constructor Game new() {
-        
+        let isGameOver = false;
+        let alphabet = Alphabet.new();
+
+        let words = Array.new(3);
+        words[0] = "CAT";
+        words[1] = "DOG";
+        words[2] = "SUS";
+
+        let pressedLetters = Array.new(33);
+        let pressedLettersCount = 0;
+
+        let gallows = Gallows.new();
+        return this;
     }
 
-    method void startNewGame(){
+    method void startNewGame() {
+        alphabet.draw();
 
+        while (~isGameOver) {
+            let ch = Keyboard.readChar();
+            if (~checkIfCharWasPressed(ch)) {
+                pressedLetters[pressedLettersCount] = ch;
+                let pressedLettersCount = pressedLettersCount + 1;
+                if (TryToOpenCharInWord(ch, /*currentWord*/)) {
+                    // TODO
+                } else {
+                    alphabet.crossOutLetter(ch);
+                    gallows.drawNextStage();
+                }
+            }
+        }
+        return;
     }
 
-    method boolean won(){
-        
+    function boolean won() {
+        // draw winner words and reset
+    }
+
+    function boolean checkIfCharWasPressed(char ch) {
+        let i = 0;
+        while (~(i == 33)) {
+            if (pressedLetters[i] == ch) {
+                return true;
+            }
+            let i = i + 1;
+        }
+        return false;
+    }
+
+    function boolean TryToOpenCharInWord(char ch, String word) {
+        let i = 0;
+        let success = false;
+        while (~(i == word.lenght())) {
+            if (word.charAt(i) == ch) {
+                success = true;
+                // TODO
+            }
+            i = i + 1;
+        }
+        return success;
     }
 
     method void dispose() {
-    
+        Memory.deAlloc(alphabet)
+        Memory.deAlloc(isGameOver)
+        Memory.deAlloc(words)
+        Memory.deAlloc(this)
+        return;
     }
 }

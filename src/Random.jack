@@ -2,14 +2,28 @@ class Random {
     static int seed;
     
     function void setSeed(int newSeed) {
-        
+        let seed = newSeed;
+        return;
     }
 
     function int rand() {
-        
+        let seed = seed + 20251;
+        if (seed < 0) {
+            let seed = seed - 32768;
+        }
+        return seed;
     }
 
     function int randRange(int range) {
-        
+        var int mask, result;
+        let mask = 1;
+        while (mask < range) {
+            let mask = mask * 2 + 1;
+        }
+        let result = Random.rand() & mask;
+        while (result > range) {
+            let result = Random.rand() & mask;
+        }
+        return result;
     }
 }

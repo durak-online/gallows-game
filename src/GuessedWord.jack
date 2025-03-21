@@ -1,0 +1,29 @@
+class GuessedWord {
+    field String word; // need it?
+    field Array letters;
+
+    constructor GuessedWord new(String _word) {
+        let word = _word;
+        let i = 0;
+        while (~(i == word.lenght())) {
+            let ch = word.charAt(i);
+            // need to rewrite coordinates
+            let letter = Letter.new(ch, i * 10, 100);
+            let letters[i] = letter;
+            let i = i + 1;
+
+            return this;
+        }
+    }
+
+    method void showLetter(char ch) {
+        let i = 0;
+        while (~(i == word.lenght())) {
+            if (letters[i] == ch) {
+                let letter = letters[i];
+                letter.draw();
+            }
+        }
+        return;
+    }
+}

@@ -1,5 +1,9 @@
 class Main {
     function void main() {
-        
+        let game = Game.new();
+        game.startGame();
+        game.dispose();
+
+        return;
     }
 }
