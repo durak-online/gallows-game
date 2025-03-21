@@ -1,9 +1,15 @@
 class Main {
     function void main() {
-        let game = Game.new();
-        game.startGame();
-        game.dispose();
-
+        // let game = Game.new();
+        // game.startGame();
+        // game.dispose();
+        var Alphabet alf;
+        let alf = Alphabet.new();
+        do alf.draw();
+        do Sys.wait(10000);
+        do alf.crossOutLetter("A");
+        do Sys.wait(10000);
+        do alf.reset();
         return;
     }
 }

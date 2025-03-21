@@ -1,23 +1,24 @@
 class Gallows {
-    field int stage
-    constructor Gallows new(){
+    field int stage;
 
+    constructor Gallows new(){
+        return this;
     }
 
     method void drawNextStage() {
-
+        return;
     }
 
     method void drawStage1() {
-
+        return;
     }
     //... TODO
 
     method void reset() {
-        
+        return;
     }
 
     method void dispose() {
-    
+        return;
     }
 }

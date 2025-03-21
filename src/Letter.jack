@@ -2,23 +2,39 @@ class Letter {
     field char letter;
     field int x,y;
 
-    constructor Letter new(char _letter, int x, int y){
-
+    constructor Letter new(char letter_, int x_, int y_){
+        let x = x_;
+        let y = y_;
+        let letter = letter_;
+        return this;
     }
 
     method void draw() {
-
+        do Output.moveCursor(x,y);
+        do Output.printChar(letter);
+        return;
     }
 
     method void cross() {
+        do Screen.drawLine(x,y,x+32,y+32);
+        return;
+    }
 
+    method char getLetter() {
+        return letter;
     }
 
     method void erase() {
-
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x,y,x+32,y+32);
+        return;
     }
 
     method void dispose() {
-    
+        // Memory.deAlloc(y);
+        // Memory.deAlloc(x);
+        // Memory.deAlloc(letter);
+        do Memory.deAlloc(this);
+        return;
     }
 }

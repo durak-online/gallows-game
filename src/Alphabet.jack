@@ -1,24 +1,80 @@
 class Alphabet {
     field Array letters;
+    field Array pressedLetters;
+    field int pressedLettersCount;
 
     constructor Alphabet new() {
-
+        var int curX, curY, i;
+        var String alph;
+        let letters = Array.new(33);
+        let pressedLetters = Array.new(33);
+        let pressedLettersCount = 0;
+        let curX = 20;
+        let curY = 160;
+        let alph = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+        let i = 0;
+        while (i < 33) {
+            let letters[i] = Letter.new(alph.charAt(i), curX + i*37, curY);
+            if ((i = 11) | (i = 22)) {
+                let curY = curY + 32;
+                let curX = 20;
+            }
+        }
+        return this;
     }
 
     method void dispose() {
-    
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method Array getPressedLetters() {
+        return pressedLetters;
+    }
+
+    method int getPressedLettersCount() {
+        return pressedLettersCount;
+    }
+
+    method void setPressedLettersCount(int count) {
+        let pressedLettersCount = count;
+        return;
     }
 
     method void draw() {
-
+        var int i;
+        var Letter letter;
+        let i = 0;
+        while (i < 33) {
+            let letter = letters[i];
+            do letter.draw();
+        }
+        return;
     }
 
     method void reset() {
-
+        var int i;
+        var Letter letter;
+        let i = 0;
+        while (i < 33) {
+            let letter = letters[i];
+            do letter.erase();
+            do letter.draw();
+        }
+        return;
     }
 
-    method void crossOutLetter(char letter) {
-
+    method void crossOutLetter(char letter_) {
+        var int i;
+        var Letter lett;
+        let i = 0;
+        while (i < 33) {
+            let lett = letters[i];
+            if (letter_ = lett.getLetter()) {
+                do lett.cross();
+            }
+        }
+        return;
     }
 
 }

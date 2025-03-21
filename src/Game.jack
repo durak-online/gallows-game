@@ -3,38 +3,36 @@ class Game {
     field Gallows gallows;
     field boolean isGameOver;
     field Array words;
-    field Array pressedLetters;
-    field int pressedLettersCount;
 
     constructor Game new() {
         let isGameOver = false;
         let alphabet = Alphabet.new();
 
         let words = Array.new(3);
-        words[0] = "CAT";
-        words[1] = "DOG";
-        words[2] = "SUS";
-
-        let pressedLetters = Array.new(33);
-        let pressedLettersCount = 0;
+        let words[0] = "КОШКА";
+        let words[1] = "СОБАКА";
+        let words[2] = "КОТ";
 
         let gallows = Gallows.new();
         return this;
     }
 
     method void startNewGame() {
-        alphabet.draw();
+        var Array pressedLetters;
+        var char ch;
+        do alphabet.draw();
 
         while (~isGameOver) {
             let ch = Keyboard.readChar();
             if (~checkIfCharWasPressed(ch)) {
-                pressedLetters[pressedLettersCount] = ch;
-                let pressedLettersCount = pressedLettersCount + 1;
-                if (TryToOpenCharInWord(ch, /*currentWord*/)) {
+                let pressedLetters = alphabet.getPressedLetters();
+                let pressedLetters[alphabet.getPressedLettersCount()] = ch;
+                do alphabet.setPressedLettersCount(alphabet.getPressedLettersCount() + 1);
+                if (TryToOpenCharInWord(ch, "КОТ")) {
                     // TODO
                 } else {
-                    alphabet.crossOutLetter(ch);
-                    gallows.drawNextStage();
+                    do alphabet.crossOutLetter(ch);
+                    do gallows.drawNextStage();
                 }
             }
         }
@@ -42,13 +40,18 @@ class Game {
     }
 
     function boolean won() {
-        // draw winner words and reset
+        return false;
     }
 
-    function boolean checkIfCharWasPressed(char ch) {
+    method boolean checkIfCharWasPressed(char ch_) {
+        var int i;
+        var Letter letter;
+        var Array pressedLetters;
         let i = 0;
-        while (~(i == 33)) {
-            if (pressedLetters[i] == ch) {
+        while (~(i = 33)) {
+            let pressedLetters = alphabet.getPressedLetters();
+            let letter = pressedLetters[i];
+            if (letter.getLetter() = ch_) {
                 return true;
             }
             let i = i + 1;
@@ -56,24 +59,26 @@ class Game {
         return false;
     }
 
-    function boolean TryToOpenCharInWord(char ch, String word) {
+    method boolean TryToOpenCharInWord(char ch, String word) {
+        var int i;
+        var boolean success;
         let i = 0;
         let success = false;
-        while (~(i == word.lenght())) {
-            if (word.charAt(i) == ch) {
-                success = true;
+        while (~(i = word.length())) {
+            if (word.charAt(i) = ch) {
+                let success = true;
                 // TODO
             }
-            i = i + 1;
+            let i = i + 1;
         }
         return success;
     }
 
     method void dispose() {
-        Memory.deAlloc(alphabet)
-        Memory.deAlloc(isGameOver)
-        Memory.deAlloc(words)
-        Memory.deAlloc(this)
+        // do Memory.deAlloc(alphabet)
+        // do Memory.deAlloc(isGameOver)
+        // do Memory.deAlloc(words)
+        do Memory.deAlloc(this);
         return;
     }
 }
