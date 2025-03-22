@@ -9,9 +9,9 @@ class Game {
         let alphabet = Alphabet.new();
 
         let words = Array.new(3);
-        let words[0] = "КОШКА";
-        let words[1] = "СОБАКА";
-        let words[2] = "КОТ";
+        let words[0] = "CAT";
+        let words[1] = "DOG";
+        let words[2] = "WOMAN";
 
         let gallows = Gallows.new();
         return this;
@@ -28,7 +28,7 @@ class Game {
                 let pressedLetters = alphabet.getPressedLetters();
                 let pressedLetters[alphabet.getPressedLettersCount()] = ch;
                 do alphabet.setPressedLettersCount(alphabet.getPressedLettersCount() + 1);
-                if (TryToOpenCharInWord(ch, "КОТ")) {
+                if (TryToOpenCharInWord(ch, "CAT")) {
                     // TODO
                 } else {
                     do alphabet.crossOutLetter(ch);

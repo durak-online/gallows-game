@@ -4,11 +4,13 @@ class Main {
         // game.startGame();
         // game.dispose();
         var Alphabet alf;
-        let alf = Alphabet.new();
+        let alf = Alphabet.new(); 
         do alf.draw();
-        do Sys.wait(10000);
+        do Sys.wait(1000);
         do alf.crossOutLetter("A");
-        do Sys.wait(10000);
+        do alf.crossOutLetter("B");
+        do alf.crossOutLetter("C");
+        do Sys.wait(1000);
         do alf.reset();
         return;
     }

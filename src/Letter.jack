@@ -10,13 +10,13 @@ class Letter {
     }
 
     method void draw() {
-        do Output.moveCursor(x,y);
+        do Output.moveCursor(y,x);
         do Output.printChar(letter);
         return;
     }
 
     method void cross() {
-        do Screen.drawLine(x,y,x+32,y+32);
+        do Screen.drawLine(x*64,y*23,x*64+8,y*23+11);
         return;
     }
 
