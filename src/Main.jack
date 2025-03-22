@@ -2,16 +2,14 @@ class Main {
     function void main() {
         // let game = Game.new();
         // game.startGame();
-        // game.dispose();
+        // game.dispose(); 
         var Alphabet alf;
         let alf = Alphabet.new(); 
         do alf.draw();
-        do Sys.wait(1000);
+        do Sys.wait(100);
         do alf.crossOutLetter("A");
         do alf.crossOutLetter("B");
         do alf.crossOutLetter("C");
-        do Sys.wait(1000);
-        do alf.reset();
         return;
     }
 }

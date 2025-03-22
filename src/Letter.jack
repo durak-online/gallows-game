@@ -1,11 +1,12 @@
 class Letter {
     field char letter;
-    field int x,y;
+    field int x,y,positionInAlph;
 
-    constructor Letter new(char letter_, int x_, int y_){
+    constructor Letter new(char letter_, int x_, int y_, int positionInAlph_){
         let x = x_;
         let y = y_;
         let letter = letter_;
+        let positionInAlph = positionInAlph_;
         return this;
     }
 
@@ -16,12 +17,21 @@ class Letter {
     }
 
     method void cross() {
-        do Screen.drawLine(x*64,y*23,x*64+8,y*23+11);
+        do Screen.setColor(true);
+        do Screen.drawLine(x*8,y*11,x*8+5,y*11+5);
         return;
     }
 
     method char getLetter() {
         return letter;
+    }
+
+    method char getPosition() {
+        return positionInAlph;
+    }
+
+    method boolean equalToChar(char ch) {
+        return letter = ch;
     }
 
     method void erase() {

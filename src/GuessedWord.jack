@@ -11,7 +11,7 @@ class GuessedWord {
         while (~(i = word.length())) {
             let ch = word.charAt(i);
             // need to rewrite coordinates
-            let letter = Letter.new(ch, i * 10, 100);
+            let letter = Letter.new(ch, i * 10, 100, 1); 
             let letters[i] = letter;
             let i = i + 1;
         }
