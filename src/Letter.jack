@@ -18,7 +18,7 @@ class Letter {
 
     method void cross() {
         do Screen.setColor(true);
-        do Screen.drawLine(x*8,y*11,x*8+5,y*11+5);
+        do Screen.drawRectangle(x*8,y*11,x*8+6,y*11+8);
         return;
     }
 
@@ -36,7 +36,7 @@ class Letter {
 
     method void erase() {
         do Screen.setColor(false);
-        do Screen.drawRectangle(x,y,x+32,y+32);
+        do Screen.drawRectangle(x*8,y*11,x*8+6,y*11+8);
         return;
     }
 

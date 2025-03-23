@@ -10,8 +10,8 @@ class Alphabet {
         let pressedLetters = Array.new(26);
         let pressedLettersCount = 0; 
         let curX = 2;  
-        let curY = 12;
-        let alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let curY = 12; 
+        let alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";  
         let i = 0;
         while (i < 26) {
             let letters[i] = Letter.new(alph.charAt(i), curX, curY, i);
@@ -50,7 +50,7 @@ class Alphabet {
         var Letter letter;
         let i = 0;
         while (i < 26) {
-            let letter = letters[i];
+            let letter = letters[i]; 
             do letter.draw();
             let i = i+1;
         }
@@ -70,18 +70,15 @@ class Alphabet {
         return;
     }
 
-    method void crossOutLetter(char letter_) {
-        var int i, pos;
+    method void crossOutLetter(String letter_) {
+        var int i, codeOfChar;
         var Letter lett;
         var char gettingLet;
-        var String alph;
         let i = 0;
-        let pos = letter_ - 65;
-        do Output.printInt(letter_);
-        do Output.printString("!!!");
+        let codeOfChar = letter_.charAt(0);
         while (i < 26) {
             let lett = letters[i];
-            if (i = pos) {
+            if (lett.getLetter() = codeOfChar) {
                 do lett.cross();
             }
             let i = i+1;

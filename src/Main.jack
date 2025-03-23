@@ -10,6 +10,10 @@ class Main {
         do alf.crossOutLetter("A");
         do alf.crossOutLetter("B");
         do alf.crossOutLetter("C");
+        do alf.crossOutLetter("D");
+        do alf.crossOutLetter("X");
+        do Sys.wait(1000);
+        do do alf.draw();
         return;
     }
 }
