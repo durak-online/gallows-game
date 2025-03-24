@@ -1,17 +1,19 @@
-class GuessedWord {
-    field String word; // need it?
+class GuessedWord { // need it?
     field Array letters;
+    field int count, guessCount;
 
     constructor GuessedWord new(String word_) {
-        var int i;
+        var int i, curX;
         var char ch;
         var Letter letter;
-        let word = word_;
+        let count = word_.length();
+        let guessCount = 0;
         let i = 0;
-        while (~(i = word.length())) {
-            let ch = word.charAt(i);
+        let curX = 2;
+        while (~(i = count)) {
+            let ch = word_.charAt(i);
             // need to rewrite coordinates
-            let letter = Letter.new(ch, i * 10, 100, 1); 
+            let letter = Letter.new(ch, curX, 8); 
             let letters[i] = letter;
             let i = i + 1;
         }
@@ -22,7 +24,7 @@ class GuessedWord {
         var int i;
         var Letter letter;
         let i = 0;
-        while (~(i = word.length())) {
+        while (~(i = count)) {
             if (letters[i] = ch) {
                 let letter = letters[i];
                 do letter.draw();

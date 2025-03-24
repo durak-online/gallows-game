@@ -11,10 +11,10 @@ class Alphabet {
         let pressedLettersCount = 0; 
         let curX = 2;  
         let curY = 12; 
-        let alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";  
+        let alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         let i = 0;
         while (i < 26) {
-            let letters[i] = Letter.new(alph.charAt(i), curX, curY, i);
+            let letters[i] = Letter.new(alph.charAt(i), curX, curY,);
             if ((i = 8) | (i = 17)) {
                 let curY = curY + 2;
                 let curX = 2;

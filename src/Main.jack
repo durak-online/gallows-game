@@ -12,8 +12,6 @@ class Main {
         do alf.crossOutLetter("C");
         do alf.crossOutLetter("D"); 
         do alf.crossOutLetter("X");
-        do Sys.wait(1000);
-        do alf.reset();
         return;
     }
 }

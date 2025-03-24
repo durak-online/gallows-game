@@ -1,12 +1,11 @@
 class Letter {
     field char letter;
-    field int x,y,positionInAlph;
+    field int x,y;
 
-    constructor Letter new(char letter_, int x_, int y_, int positionInAlph_){
+    constructor Letter new(char letter_, int x_, int y_){
         let x = x_;
         let y = y_;
         let letter = letter_;
-        let positionInAlph = positionInAlph_;
         return this;
     }
 
@@ -24,10 +23,6 @@ class Letter {
 
     method char getLetter() {
         return letter;
-    }
-
-    method char getPosition() {
-        return positionInAlph;
     }
 
     method boolean equalToChar(char ch) {
