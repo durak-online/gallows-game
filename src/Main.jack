@@ -4,16 +4,23 @@ class Main {
         // game.startGame();
         // game.dispose(); 
         var Alphabet alf;
+        var Gallows gallows;
         let alf = Alphabet.new(); 
+        let gallows = Gallows.new(); 
         do alf.draw();
         do Sys.wait(100);
+
         do alf.crossOutLetter("A");
         do alf.crossOutLetter("B");
         do alf.crossOutLetter("C");
         do alf.crossOutLetter("D"); 
         do alf.crossOutLetter("X");
+
         do Sys.wait(1000);
         do alf.reset();
+               
+        do gallows.drawNextStage();
+        do Sys.wait(300);
         return;
     }
 }
