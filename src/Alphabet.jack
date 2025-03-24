@@ -9,15 +9,15 @@ class Alphabet {
         let letters = Array.new(26);
         let pressedLetters = Array.new(26);
         let pressedLettersCount = 0; 
-        let curX = 2;  
+        let curX = 4;  
         let curY = 12; 
-        let alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";  
         let i = 0;
         while (i < 26) {
-            let letters[i] = Letter.new(alph.charAt(i), curX, curY,);
+            let letters[i] = Letter.new(alph.charAt(i), curX, curY);
             if ((i = 8) | (i = 17)) {
                 let curY = curY + 2;
-                let curX = 2;
+                let curX = 4;
             }
             else {
                 let curX = curX + 2;

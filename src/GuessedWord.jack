@@ -2,33 +2,49 @@ class GuessedWord { // need it?
     field Array letters;
     field int count, guessCount;
 
-    constructor GuessedWord new(String word_) {
-        var int i, curX;
+    constructor GuessedWord new(String word_) { 
+        var int j, curX;
         var char ch;
         var Letter letter;
         let count = word_.length();
         let guessCount = 0;
-        let i = 0;
-        let curX = 2;
-        while (~(i = count)) {
-            let ch = word_.charAt(i);
-            // need to rewrite coordinates
-            let letter = Letter.new(ch, curX, 8); 
-            let letters[i] = letter;
-            let i = i + 1;
-        }
+        let j = 0;
+        let letters = Array.new(count);
+        let curX = 8; 
+        while (j < count) {
+            let ch = word_.charAt(j);
+            let letter = Letter.new(ch, curX, 6);
+            let letters[j] = letter;
+            let curX = curX + 2;
+            let j = j + 1;
+        } 
         return this;
     }
 
-    method void showLetter(char ch) {
+    method void start() {
+        var int i,x,y;
+        var Letter letter;
+        let i = 0;
+        while (i < count) {
+            let letter = letters[i];
+            let x = letter.getX();
+            let y = letter.getY();
+            do Screen.drawRectangle((x)*8, (y+1)*11 + 2, (x+1)*8 - 3, (y+1)*11 + 2);
+            let i = i + 1;
+        }
+        return;
+    }
+
+    method void showLetter(String ch) {
         var int i;
         var Letter letter;
         let i = 0;
-        while (~(i = count)) {
-            if (letters[i] = ch) {
-                let letter = letters[i];
+        while (i < count) {
+            let letter = letters[i];
+            if (letter.getLetter() = ch.charAt(0)) {
                 do letter.draw();
             }
+            let i = i + 1;
         }
         return;
     }

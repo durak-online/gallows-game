@@ -25,6 +25,14 @@ class Letter {
         return letter;
     }
 
+    method int getX() {
+        return x;
+    }
+
+    method int getY() {
+        return y;
+    }
+
     method boolean equalToChar(char ch) {
         return letter = ch;
     }

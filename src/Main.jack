@@ -3,15 +3,17 @@ class Main {
         // let game = Game.new();
         // game.startGame();
         // game.dispose(); 
+        var GuessedWord word;
         var Alphabet alf;
         let alf = Alphabet.new(); 
         do alf.draw();
         do Sys.wait(100);
-        do alf.crossOutLetter("A");
-        do alf.crossOutLetter("B");
         do alf.crossOutLetter("C");
-        do alf.crossOutLetter("D"); 
-        do alf.crossOutLetter("X");
+        let word = GuessedWord.new("WOMAN");
+        do word.showLetter("M");
+        do word.showLetter("W");
+        do word.showLetter("N");   
+        do word.start();
         return;
     }
 }
