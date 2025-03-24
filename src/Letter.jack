@@ -1,17 +1,18 @@
 class Letter {
-    field char letter;
+    field String letter;
     field int x,y;
 
-    constructor Letter new(char letter_, int x_, int y_){
+    constructor Letter new(char letter_, int x_, int y_) {
+        let letter = String.new(1);
+        do letter.appendChar(letter_);
         let x = x_;
         let y = y_;
-        let letter = letter_;
         return this;
     }
 
     method void draw() {
         do Output.moveCursor(y,x);
-        do Output.printChar(letter);
+        do Output.printChar(letter.charAt(0));
         return;
     }
 
@@ -22,10 +23,7 @@ class Letter {
     }
 
     method String getLetter() {
-        var String result;
-        let result = String.new(1);
-        do result.appendChar(letter);
-        return result;
+        return letter;
     }
 
     method int getX() {
@@ -37,7 +35,7 @@ class Letter {
     }
 
     method boolean equalToChar(char ch) {
-        return letter = ch;
+        return letter.charAt(0) = ch;
     }
 
     method void erase() {

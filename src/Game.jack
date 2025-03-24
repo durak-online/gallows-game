@@ -30,8 +30,10 @@ class Game {
         var Array pressedLetters;
         var char input;
         var String ch;
+
         do alphabet.draw();
         do guessedWord.draw();
+        let ch = "!";
 
         while (~isGameOver) {
             if (~(Keyboard.keyPressed() = 0)) {
@@ -39,9 +41,9 @@ class Game {
             } else {
                 let input = 0;
             }
-            let ch = String.new(1);
-            do ch.appendChar(input);
-            if (checkIfCharWasPressed(ch)) {
+            if (~(input = 0) & (~checkIfCharWasPressed(ch))) {
+                do ch.setCharAt(0, input);
+
                 let pressedLetters = alphabet.getPressedLetters();
                 let pressedLetters[alphabet.getPressedLettersCount()] = ch;
                 do alphabet.setPressedLettersCount(alphabet.getPressedLettersCount() + 1);
@@ -63,7 +65,7 @@ class Game {
                     let isGameOver = true;
                 }
             }
-            do Sys.wait(100);
+            do Sys.wait(20);
         }
         return;
     }
@@ -82,9 +84,11 @@ class Game {
         let pressedLetters = alphabet.getPressedLetters();
         while (i < 26) {
             let letter = pressedLetters[i];
-            let letterChar = letter.getLetter();
-            if (letterChar.charAt(0) = ch.charAt(0)) {
-                return true;
+            if (~(letter = 0)) {
+                let letterChar = letter.getLetter();
+                if (letterChar.charAt(0) = ch.charAt(0)) {
+                    return true;
+                }
             }
             let i = i + 1;
         }
