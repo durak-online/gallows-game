@@ -1,4 +1,5 @@
-class GuessedWord { // need it?
+class GuessedWord {
+    field String word;
     field Array letters;
     field int count, guessCount;
 
@@ -7,6 +8,7 @@ class GuessedWord { // need it?
         var char ch;
         var Letter letter;
         let count = word_.length();
+        let word = word_;
         let guessCount = 0;
         let j = 0;
         let letters = Array.new(count);
@@ -21,7 +23,7 @@ class GuessedWord { // need it?
         return this;
     }
 
-    method void start() {
+    method void draw() {
         var int i,x,y;
         var Letter letter;
         let i = 0;
@@ -43,9 +45,20 @@ class GuessedWord { // need it?
             let letter = letters[i];
             if (letter.getLetter() = ch.charAt(0)) {
                 do letter.draw();
+                let guessCount = guessCount + 1;
             }
             let i = i + 1;
         }
         return;
+    }
+
+    method boolean checkIfWin() {
+        var boolean result;
+        let result = (count = guessCount);
+        return result;
+    }
+
+    method String getWord() {
+        return word;
     }
 }

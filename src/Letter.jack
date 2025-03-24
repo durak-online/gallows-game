@@ -21,8 +21,11 @@ class Letter {
         return;
     }
 
-    method char getLetter() {
-        return letter;
+    method String getLetter() {
+        var String result;
+        let result = String.new(1);
+        do result.appendChar(letter);
+        return result;
     }
 
     method int getX() {

@@ -1,19 +1,20 @@
 class Main {
     function void main() {
-        // let game = Game.new();
-        // game.startGame();
-        // game.dispose(); 
-        var GuessedWord word;
-        var Alphabet alf;
-        let alf = Alphabet.new(); 
-        do alf.draw();
-        do Sys.wait(100);
-        do alf.crossOutLetter("C");
-        let word = GuessedWord.new("WOMAN");
-        do word.showLetter("M");
-        do word.showLetter("W");
-        do word.showLetter("N");   
-        do word.start();
+        var Game game;
+        let game = Game.new();
+        do game.startNewGame();
+        do game.dispose(); 
+        // var GuessedWord word;
+        // var Alphabet alf;
+        // let alf = Alphabet.new(); 
+        // do alf.draw();
+        // do Sys.wait(100);
+        // do alf.crossOutLetter("C");
+        // let word = GuessedWord.new("WOMAN");
+        // do word.showLetter("M");
+        // do word.showLetter("W");
+        // do word.showLetter("N");   
+        // do word.start();
         return;
     }
 }

@@ -3,8 +3,12 @@ class Game {
     field Gallows gallows;
     field boolean isGameOver;
     field Array words;
+    field GuessedWord guessedWord;
+    field int mistakesCount;
 
     constructor Game new() {
+        var String word;
+        var int randomNum;
         let isGameOver = false;
         let alphabet = Alphabet.new();
 
@@ -14,44 +18,72 @@ class Game {
         let words[2] = "WOMAN";
 
         let gallows = Gallows.new();
+
+        let randomNum = Random.randRange(2);
+        let word = words[randomNum];
+        let mistakesCount = 5;
+        let guessedWord = GuessedWord.new(word);
         return this;
     }
 
     method void startNewGame() {
         var Array pressedLetters;
-        var char ch;
+        var char input;
+        var String ch;
         do alphabet.draw();
+        do guessedWord.draw();
 
         while (~isGameOver) {
-            let ch = Keyboard.readChar();
-            if (~checkIfCharWasPressed(ch)) {
+            if (~(Keyboard.keyPressed() = 0)) {
+                let input = Keyboard.keyPressed();
+            } else {
+                let input = 0;
+            }
+            let ch = String.new(1);
+            do ch.appendChar(input);
+            if (checkIfCharWasPressed(ch)) {
                 let pressedLetters = alphabet.getPressedLetters();
                 let pressedLetters[alphabet.getPressedLettersCount()] = ch;
                 do alphabet.setPressedLettersCount(alphabet.getPressedLettersCount() + 1);
-                if (TryToOpenCharInWord(ch, "CAT")) {
-                    // TODO
+
+                if (isWordHasChar(ch)) {
+                    do guessedWord.showLetter(ch);
                 } else {
-                    do alphabet.crossOutLetter(ch);
+                    let mistakesCount = mistakesCount - 1;
                     do gallows.drawNextStage();
                 }
+                do alphabet.crossOutLetter(ch);
+
+                if (guessedWord.checkIfWin()) {
+                    let isGameOver = true;
+                    do Game.won();
+                }
+
+                if (mistakesCount = 0) {
+                    let isGameOver = true;
+                }
             }
+            do Sys.wait(100);
         }
         return;
     }
 
-    function boolean won() {
-        return false;
+    function void won() {
+        do Output.printString("LOH!");
+        return;
     }
 
-    method boolean checkIfCharWasPressed(char ch_) {
+    method boolean checkIfCharWasPressed(String ch) {
         var int i;
         var Letter letter;
         var Array pressedLetters;
+        var String letterChar;
         let i = 0;
-        while (~(i = 33)) {
-            let pressedLetters = alphabet.getPressedLetters();
+        let pressedLetters = alphabet.getPressedLetters();
+        while (i < 26) {
             let letter = pressedLetters[i];
-            if (letter.getLetter() = ch_) {
+            let letterChar = letter.getLetter();
+            if (letterChar.charAt(0) = ch.charAt(0)) {
                 return true;
             }
             let i = i + 1;
@@ -59,15 +91,16 @@ class Game {
         return false;
     }
 
-    method boolean TryToOpenCharInWord(char ch, String word) {
+    method boolean isWordHasChar(String ch) {
         var int i;
         var boolean success;
+        var String word;
         let i = 0;
         let success = false;
-        while (~(i = word.length())) {
-            if (word.charAt(i) = ch) {
+        let word = guessedWord.getWord();
+        while (i < word.length()) {
+            if (word.charAt(i) = ch.charAt(0)) {
                 let success = true;
-                // TODO
             }
             let i = i + 1;
         }
@@ -75,9 +108,7 @@ class Game {
     }
 
     method void dispose() {
-        // do Memory.deAlloc(alphabet)
-        // do Memory.deAlloc(isGameOver)
-        // do Memory.deAlloc(words)
+        do Output.printString("GAME OVER");
         do Memory.deAlloc(this);
         return;
     }
