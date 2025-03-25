@@ -16,7 +16,7 @@ class Game {
         let words = Array.new(3);
         let words[0] = "cat";
         let words[1] = "dog";
-        let words[2] = "woman";
+        let words[2] = "WOMAN";
 
         let gallows = Gallows.new();
 

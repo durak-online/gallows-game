@@ -14,7 +14,7 @@ class Alphabet {
         let curY = 12;
         // char codes from 97 to 122 if lower case
         // from 60 to 90 if upper case
-        let alph = /*"ABCDEFGHIJKLMNOPQRSTUVWXYZ"*/ "abcdefghijklmnopqrstuvwxyz";
+        let alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" /*"abcdefghijklmnopqrstuvwxyz"*/;
 
         let i = 0;
         while (i < 26) {
