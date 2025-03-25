@@ -15,7 +15,7 @@ class GuessedWord {
         let curX = 8; 
         while (j < count) {
             let ch = word_.charAt(j);
-            let letter = Letter.new(ch, curX, 6);
+            let letter = Letter.new(ch, ch, curX, 6);
             let letters[j] = letter;
             let curX = curX + 2;
             let j = j + 1;
@@ -37,13 +37,33 @@ class GuessedWord {
         return;
     }
 
-    method void showLetter(String ch) {
+    method boolean tryOpenLetter(int charCode) {
         var int i;
         var Letter letter;
+        var boolean success;
+        
+        let i = 0;
+        let success = false;
+        while (i < count) {
+            let letter = letters[i];
+            if (letter.getLetterCode() = charCode) {
+                do letter.draw();
+                let guessCount = guessCount + 1;
+                let success = true;
+            }
+            let i = i + 1;
+        }
+        return success;
+    }
+
+    method void showLetter(int charCode) {
+        var int i;
+        var Letter letter;
+
         let i = 0;
         while (i < count) {
             let letter = letters[i];
-            if (letter.getLetter() = ch.charAt(0)) {
+            if (letter.getLetterCode() = charCode) {
                 do letter.draw();
                 let guessCount = guessCount + 1;
             }

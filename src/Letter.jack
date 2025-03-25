@@ -1,10 +1,11 @@
 class Letter {
-    field String letter;
+    field char letter;
+    field int letterCode;
     field int x,y;
 
-    constructor Letter new(char letter_, int x_, int y_) {
-        let letter = String.new(1);
-        do letter.appendChar(letter_);
+    constructor Letter new(char letter_, int letterCode_, int x_, int y_) {
+        let letter = letter_;
+        let letterCode = letterCode_;
         let x = x_;
         let y = y_;
         return this;
@@ -12,7 +13,7 @@ class Letter {
 
     method void draw() {
         do Output.moveCursor(y,x);
-        do Output.printChar(letter.charAt(0));
+        do Output.printChar(letter);
         return;
     }
 
@@ -22,8 +23,8 @@ class Letter {
         return;
     }
 
-    method String getLetter() {
-        return letter;
+    method int getLetterCode() {
+        return letterCode;
     }
 
     method int getX() {
@@ -34,10 +35,6 @@ class Letter {
         return y;
     }
 
-    method boolean equalToChar(char ch) {
-        return letter.charAt(0) = ch;
-    }
-
     method void erase() {
         do Screen.setColor(false);
         do Screen.drawRectangle(x*8,y*11,x*8+6,y*11+8);
@@ -45,9 +42,6 @@ class Letter {
     }
 
     method void dispose() {
-        // Memory.deAlloc(y);
-        // Memory.deAlloc(x);
-        // Memory.deAlloc(letter);
         do Memory.deAlloc(this);
         return;
     }

@@ -6,15 +6,19 @@ class Alphabet {
     constructor Alphabet new() {
         var int curX, curY, i;
         var String alph;
+
         let letters = Array.new(26);
         let pressedLetters = Array.new(26);
-        let pressedLettersCount = 0; 
+        let pressedLettersCount = 0;
         let curX = 4;  
-        let curY = 12; 
-        let alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";  
+        let curY = 12;
+        // char codes from 97 to 122 if lower case
+        // from 60 to 90 if upper case
+        let alph = /*"ABCDEFGHIJKLMNOPQRSTUVWXYZ"*/ "abcdefghijklmnopqrstuvwxyz";
+
         let i = 0;
         while (i < 26) {
-            let letters[i] = Letter.new(alph.charAt(i), curX, curY);
+            let letters[i] = Letter.new(alph.charAt(i), alph.charAt(i), curX, curY);
             if ((i = 8) | (i = 17)) {
                 let curY = curY + 2;
                 let curX = 4;
@@ -36,23 +40,15 @@ class Alphabet {
         return pressedLetters; 
     }
 
-    method int getPressedLettersCount() {
-        return pressedLettersCount;
-    }
-
-    method void setPressedLettersCount(int count) {
-        let pressedLettersCount = count;
-        return;
-    }
-
     method void draw() {
         var int i;
         var Letter letter;
+
         let i = 0;
         while (i < 26) {
             let letter = letters[i]; 
             do letter.draw();
-            let i = i+1;
+            let i = i + 1;
         }
         return;
     }
@@ -60,30 +56,35 @@ class Alphabet {
     method void reset() {
         var int i;
         var Letter letter;
+
         let i = 0;
         while (i < 26) {
             let letter = letters[i];
             do letter.erase();
             do letter.draw();
-            let i = i+1;
+            let i = i + 1;
         }
         return;
     }
 
-    method void crossOutLetter(String letter_) {
+    method void crossOutLetter(int charCode) {
         var int i, codeOfChar;
-        var Letter lett;
-        var char gettingLet;
+        var Letter letter;
+
         let i = 0;
-        let codeOfChar = letter_.charAt(0);
         while (i < 26) {
-            let lett = letters[i];
-            if (lett.getLetter() = codeOfChar) {
-                do lett.cross();
+            let letter = letters[i];
+            if (letter.getLetterCode() = charCode) {
+                do letter.cross();
             }
-            let i = i+1;
+            let i = i + 1;
         }
         return;
     }
 
+    method void addPressedLetter(int charCode) {
+        let pressedLetters[pressedLettersCount] = charCode;
+        let pressedLettersCount = pressedLettersCount + 1;
+        return;
+    }
 }
