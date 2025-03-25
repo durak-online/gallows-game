@@ -58,6 +58,7 @@ class Game {
 
                 if (mistakesCount = 0) {
                     let isGameOver = true;
+                    do Game.loose();
                 }
             }
             do Sys.wait(20);
@@ -66,7 +67,17 @@ class Game {
     }
 
     function void won() {
-        do Output.printString("LOH!");
+        do Screen.clearScreen();
+        do Output.moveCursor(11,27); 
+        do Output.printString("YOU WIN!!!");
+        return;
+    }
+
+    function void loose() {
+        do Sys.wait(2000);
+        do Screen.clearScreen();
+        do Output.moveCursor(11,27); 
+        do Output.printString("YOU LOOSE!");
         return;
     }
 
@@ -117,7 +128,7 @@ class Game {
         var String word;
         let key = 0;
         do Output.moveCursor(11,24); 
-        do Output.printString("PRESS ANY KEY..."); 
+        do Output.printString("PRESS ANY KEY...");
         while (key = 0) {
             let key = Keyboard.keyPressed();
         }
@@ -126,6 +137,7 @@ class Game {
         let word = words[randomNum];
         let guessedWord = GuessedWord.new(word);
         do Screen.clearScreen();
+        do Sys.wait(200);
         return;
     }
 }
