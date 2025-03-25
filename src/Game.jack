@@ -7,23 +7,22 @@ class Game {
     field int mistakesCount;
 
     constructor Game new() {
-        var String word;
-        var int randomNum;
-
         let isGameOver = false;
-        let alphabet = Alphabet.new();
+        let alphabet = Alphabet.new(); 
 
-        let words = Array.new(3);
-        let words[0] = "cat";
-        let words[1] = "dog";
+        let words = Array.new(10);
+        let words[0] = "JEW";
+        let words[1] = "DOG";
         let words[2] = "WOMAN";
+        let words[3] = "RANDOM";
+        let words[4] = "SUPER";
+        let words[5] = "JACK";
+        let words[6] = "HUMAN";
+        let words[7] = "WATER";
+        let words[8] = "BOTTLE";
+        let words[9] = "RABBIT";
 
-        let gallows = Gallows.new();
-
-        let randomNum = Random.randRange(2);
-        let word = words[randomNum];
         let mistakesCount = 5;
-        let guessedWord = GuessedWord.new(word);
         return this;
     }
 
@@ -32,8 +31,10 @@ class Game {
         var char input;
         var boolean condition, hasSuccessInOpen;
 
+        do setRandomWord();
         do alphabet.draw();
         do guessedWord.draw();
+        let gallows = Gallows.new();
 
         while (~isGameOver) {
             let input = Keyboard.keyPressed();
@@ -106,8 +107,25 @@ class Game {
     }
 
     method void dispose() {
-        do Output.printString("GAME OVER");
         do Memory.deAlloc(this);
+        return;
+    }
+
+    method void setRandomWord() {
+        var int randomNum;
+        var char key;
+        var String word;
+        let key = 0;
+        do Output.moveCursor(11,24); 
+        do Output.printString("PRESS ANY KEY..."); 
+        while (key = 0) {
+            let key = Keyboard.keyPressed();
+        }
+        do Random.setSeed(key);
+        let randomNum = Random.randRange(9);
+        let word = words[randomNum];
+        let guessedWord = GuessedWord.new(word);
+        do Screen.clearScreen();
         return;
     }
 }

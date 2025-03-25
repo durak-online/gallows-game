@@ -11,15 +11,25 @@ class Gallows {
     }
 
     method void drawNextStage(){
-        do Screen.setColor(true);   
-        do drawStage1(); 
-        do drawStage2();
-        do drawStage3();
-        do drawStage4();
-        do drawStage5();
-        do drawStage6();
-        do drawStage7();
-        
+        do Screen.setColor(true);
+        if (stage = 0) {
+            do drawStage1();
+        }
+        if (stage = 1) {
+            do drawStage2();
+        }
+        if (stage = 2) {
+            do drawStage3();
+        }
+        if (stage = 3) {
+            do drawStage4();
+        }
+        if (stage = 4) {
+            do drawStage5();
+            do drawStage6();
+            do drawStage7();
+        }
+        let stage = stage + 1;
         return;
     }
 
