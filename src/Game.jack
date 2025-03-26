@@ -126,7 +126,7 @@ class Game {
             let key = Keyboard.keyPressed();
         }
         do Random.setSeed(key);
-        let randomNum = Random.randRange(34);
+        let randomNum = Random.randRange(29);
         let word = words[randomNum];
         let guessedWord = GuessedWord.new(word);
         do Screen.clearScreen();
@@ -166,11 +166,6 @@ class Game {
         let words[27] = "CHILD";
         let words[28] = "MUSIC";
         let words[29] = "SCALE";
-        let words[30] = "PROBLEM";
-        let words[31] = "COMPANY";
-        let words[32] = "MORNING";
-        let words[33] = "CURRENT";
-        let words[34] = "BROTHER";
         return;
     }
 }
