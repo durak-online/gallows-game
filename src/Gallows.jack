@@ -26,6 +26,8 @@ class Gallows {
         }
         if (stage = 4) {
             do drawStage5();
+        }
+        if (stage = 5) {
             do drawStage6();
             do drawStage7();
         }

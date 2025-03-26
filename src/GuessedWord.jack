@@ -56,17 +56,14 @@ class GuessedWord {
         return success;
     }
 
-    method void showLetter(int charCode) {
+    method void showLetters() {
         var int i;
         var Letter letter;
 
         let i = 0;
         while (i < count) {
             let letter = letters[i];
-            if (letter.getLetterCode() = charCode) {
-                do letter.draw();
-                let guessCount = guessCount + 1;
-            }
+            do letter.draw();
             let i = i + 1;
         }
         return;
