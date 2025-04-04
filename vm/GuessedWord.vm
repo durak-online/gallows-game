@@ -1,199 +1,198 @@
 function GuessedWord.new 4
-    push constant 4
-    call Memory.alloc 1
-    pop pointer 0
-    push argument 0
-    call String.length 1
-    pop this 2
-    push argument 0
-    pop this 0
-    push constant 0
-    pop this 3
-    push constant 0
-    pop local 0
-    push this 2
-    call Array.new 1
-    pop this 1
-    push constant 8
-    pop local 1
-label GuessedWord_0
-    push local 0
-    push this 2
-    lt
-    not
-    if-goto GuessedWord_1
-    push argument 0
-    push local 0
-    call String.charAt 2
-    pop local 2
-    push local 2
-    push local 2
-    push local 1
-    push constant 6
-    call Letter.new 4
-    pop local 3
-    push local 0
-    push this 1
-    add
-    push local 3
-    pop temp 0
-    pop pointer 1
-    push temp 0
-    pop that 0
-    push local 1
-    push constant 2
-    add
-    pop local 1
-    push local 0
-    push constant 1
-    add
-    pop local 0
-    goto GuessedWord_0
-label GuessedWord_1
-    push pointer 0
-    return
+push constant 4
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+call String.length 1
+pop this 2
+push argument 0
+pop this 0
+push constant 0
+pop this 3
+push constant 0
+pop local 0
+push this 2
+call Array.new 1
+pop this 1
+push constant 8
+pop local 1
+label WHILE_EXP0
+push local 0
+push this 2
+lt
+not
+if-goto WHILE_END0
+push argument 0
+push local 0
+call String.charAt 2
+pop local 2
+push local 2
+push local 2
+push local 1
+push constant 6
+call Letter.new 4
+pop local 3
+push local 0
+push this 1
+add
+push local 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 1
+push constant 2
+add
+pop local 1
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push pointer 0
+return
 function GuessedWord.draw 4
-    push argument 0
-    pop pointer 0
-    push constant 0
-    pop local 0
-label GuessedWord_2
-    push local 0
-    push this 2
-    lt
-    not
-    if-goto GuessedWord_3
-    push local 0
-    push this 1
-    add
-    pop pointer 1
-    push that 0
-    pop local 3
-    push local 3
-    call Letter.getX 1
-    pop local 1
-    push local 3
-    call Letter.getY 1
-    pop local 2
-    push local 1
-    push constant 8
-    call Math.multiply 2
-    push local 2
-    push constant 1
-    add
-    push constant 11
-    call Math.multiply 2
-    push constant 2
-    add
-    push local 1
-    push constant 1
-    add
-    push constant 8
-    call Math.multiply 2
-    push constant 3
-    sub
-    push local 2
-    push constant 1
-    add
-    push constant 11
-    call Math.multiply 2
-    push constant 2
-    add
-    call Screen.drawRectangle 4
-    pop temp 0
-    push local 0
-    push constant 1
-    add
-    pop local 0
-    goto GuessedWord_2
-label GuessedWord_3
-    push constant 0
-    return
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push this 2
+lt
+not
+if-goto WHILE_END0
+push local 0
+push this 1
+add
+pop pointer 1
+push that 0
+pop local 3
+push local 3
+call Letter.getX 1
+pop local 1
+push local 3
+call Letter.getY 1
+pop local 2
+push local 1
+push constant 8
+call Math.multiply 2
+push local 2
+push constant 1
+add
+push constant 11
+call Math.multiply 2
+push constant 2
+add
+push local 1
+push constant 1
+add
+push constant 8
+call Math.multiply 2
+push constant 3
+sub
+push local 2
+push constant 1
+add
+push constant 11
+call Math.multiply 2
+push constant 2
+add
+call Screen.drawRectangle 4
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
 function GuessedWord.tryOpenLetter 3
-    push argument 0
-    pop pointer 0
-    push constant 0
-    pop local 0
-    push constant 0
-    pop local 2
-label GuessedWord_4
-    push local 0
-    push this 2
-    lt
-    not
-    if-goto GuessedWord_5
-    push local 0
-    push this 1
-    add
-    pop pointer 1
-    push that 0
-    pop local 1
-    push local 1
-    call Letter.getLetterCode 1
-    push argument 1
-    eq
-    not
-    if-goto GuessedWord_7
-    push local 1
-    call Letter.draw 1
-    pop temp 0
-    push this 3
-    push constant 1
-    add
-    pop this 3
-    push constant 1
-    neg
-    pop local 2
-    goto GuessedWord_6
-label GuessedWord_7
-label GuessedWord_6
-    push local 0
-    push constant 1
-    add
-    pop local 0
-    goto GuessedWord_4
-label GuessedWord_5
-    push local 2
-    return
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+push constant 0
+pop local 2
+label WHILE_EXP0
+push local 0
+push this 2
+lt
+not
+if-goto WHILE_END0
+push local 0
+push this 1
+add
+pop pointer 1
+push that 0
+pop local 1
+push local 1
+call Letter.getLetterCode 1
+push argument 1
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 1
+call Letter.draw 1
+pop temp 0
+push this 3
+push constant 1
+add
+pop this 3
+push constant 0
+not
+pop local 2
+label IF_FALSE0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push local 2
+return
 function GuessedWord.showLetters 2
-    push argument 0
-    pop pointer 0
-    push constant 0
-    pop local 0
-label GuessedWord_8
-    push local 0
-    push this 2
-    lt
-    not
-    if-goto GuessedWord_9
-    push local 0
-    push this 1
-    add
-    pop pointer 1
-    push that 0
-    pop local 1
-    push local 1
-    call Letter.draw 1
-    pop temp 0
-    push local 0
-    push constant 1
-    add
-    pop local 0
-    goto GuessedWord_8
-label GuessedWord_9
-    push constant 0
-    return
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push this 2
+lt
+not
+if-goto WHILE_END0
+push local 0
+push this 1
+add
+pop pointer 1
+push that 0
+pop local 1
+push local 1
+call Letter.draw 1
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
 function GuessedWord.checkIfWin 1
-    push argument 0
-    pop pointer 0
-    push this 2
-    push this 3
-    eq
-    pop local 0
-    push local 0
-    return
+push argument 0
+pop pointer 0
+push this 2
+push this 3
+eq
+pop local 0
+push local 0
+return
 function GuessedWord.getWord 0
-    push argument 0
-    pop pointer 0
-    push this 0
-    return
+push argument 0
+pop pointer 0
+push this 0
+return

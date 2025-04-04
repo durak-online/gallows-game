@@ -1,102 +1,68 @@
 function Letter.new 0
-    push constant 4
-    call Memory.alloc 1
-    pop pointer 0
-    push argument 0
-    pop this 0
-    push argument 1
-    pop this 1
-    push argument 2
-    pop this 2
-    push argument 3
-    pop this 3
-    push pointer 0
-    return
+push constant 4
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push argument 1
+pop this 1
+push argument 2
+pop this 2
+push argument 3
+pop this 3
+push pointer 0
+return
 function Letter.draw 0
-    push argument 0
-    pop pointer 0
-    push this 3
-    push this 2
-    call Output.moveCursor 2
-    pop temp 0
-    push this 0
-    call Output.printChar 1
-    pop temp 0
-    push constant 0
-    return
+push argument 0
+pop pointer 0
+push this 3
+push this 2
+call Output.moveCursor 2
+pop temp 0
+push this 0
+call Output.printChar 1
+pop temp 0
+push constant 0
+return
 function Letter.cross 0
-    push argument 0
-    pop pointer 0
-    push constant 1
-    neg
-    call Screen.setColor 1
-    pop temp 0
-    push this 2
-    push constant 8
-    call Math.multiply 2
-    push this 3
-    push constant 11
-    call Math.multiply 2
-    push this 2
-    push constant 8
-    call Math.multiply 2
-    push constant 6
-    add
-    push this 3
-    push constant 11
-    call Math.multiply 2
-    push constant 10
-    add
-    call Screen.drawRectangle 4
-    pop temp 0
-    push constant 0
-    return
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 2
+push constant 8
+call Math.multiply 2
+push this 3
+push constant 11
+call Math.multiply 2
+push this 2
+push constant 8
+call Math.multiply 2
+push constant 6
+add
+push this 3
+push constant 11
+call Math.multiply 2
+push constant 10
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
 function Letter.getLetterCode 0
-    push argument 0
-    pop pointer 0
-    push this 1
-    return
+push argument 0
+pop pointer 0
+push this 1
+return
 function Letter.getX 0
-    push argument 0
-    pop pointer 0
-    push this 2
-    return
+push argument 0
+pop pointer 0
+push this 2
+return
 function Letter.getY 0
-    push argument 0
-    pop pointer 0
-    push this 3
-    return
-function Letter.erase 0
-    push argument 0
-    pop pointer 0
-    push constant 0
-    call Screen.setColor 1
-    pop temp 0
-    push this 2
-    push constant 8
-    call Math.multiply 2
-    push this 3
-    push constant 11
-    call Math.multiply 2
-    push this 2
-    push constant 8
-    call Math.multiply 2
-    push constant 6
-    add
-    push this 3
-    push constant 11
-    call Math.multiply 2
-    push constant 8
-    add
-    call Screen.drawRectangle 4
-    pop temp 0
-    push constant 0
-    return
-function Letter.dispose 0
-    push argument 0
-    pop pointer 0
-    push pointer 0
-    call Memory.deAlloc 1
-    pop temp 0
-    push constant 0
-    return
+push argument 0
+pop pointer 0
+push this 3
+return

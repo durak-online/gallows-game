@@ -12,14 +12,14 @@ class Letter {
     }
 
     method void draw() {
-        do Output.moveCursor(y,x);
+        do Output.moveCursor(y, x);
         do Output.printChar(letter);
         return;
     }
 
     method void cross() {
         do Screen.setColor(true);
-        do Screen.drawRectangle(x*8,y*11,x*8+6,y*11+10);
+        do Screen.drawRectangle(x * 8, y * 11, x * 8 + 6, y * 11 + 10);
         return;
     }
 
@@ -33,16 +33,5 @@ class Letter {
 
     method int getY() {
         return y;
-    }
-
-    method void erase() {
-        do Screen.setColor(false);
-        do Screen.drawRectangle(x*8,y*11,x*8+6,y*11+8);
-        return;
-    }
-
-    method void dispose() {
-        do Memory.deAlloc(this);
-        return;
     }
 }

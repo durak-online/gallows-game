@@ -2,99 +2,82 @@ class Gallows {
     field int stage; 
     field int baseX, baseY;
 
-    constructor Gallows new(){
+    constructor Gallows new() {
         let baseX = 275;  
         let baseY = 200; 
         let stage = 0;
-        do drawStage0();
+        do drawBasis();
         return this;
     }
 
-    method void drawNextStage(){
+    method void drawNextStage() {
         do Screen.setColor(true);
+
+        // checks current stage
         if (stage = 0) {
-            do drawStage1();
+            do drawPillar();
         }
         if (stage = 1) {
-            do drawStage2();
+            do drawCrossbar();
         }
         if (stage = 2) {
-            do drawStage3();
+            do drawRope();
         }
         if (stage = 3) {
-            do drawStage4();
+            do drawHead();
         }
         if (stage = 4) {
-            do drawStage5();
+            do drawBody();
         }
         if (stage = 5) {
-            do drawStage6();
-            do drawStage7();
+            do drawArms();
+            do drawLegs();
         }
+
         let stage = stage + 1;
         return;
     }
 
-    method void drawStage0() {
+    method void drawBasis() {
         do Screen.drawLine(baseX, baseY, baseX + 120, baseY);
         return;
     }
 
-    method void drawStage1(){   
+    method void drawPillar() {   
         do Screen.drawLine(baseX, baseY, baseX, baseY - 150);
         return;
     }
 
-    method void drawStage2(){  
+    method void drawCrossbar() {  
         do Screen.drawLine(baseX, baseY - 150, baseX + 60, baseY - 150);
         return;
     }
 
-    method void drawStage3(){
+    method void drawRope() {
         do Screen.drawLine(baseX + 60, baseY - 150, baseX + 60, baseY - 110);
         return;
     }
 
-    method void drawStage4(){
+    method void drawHead() {
         do Screen.setColor(true);
         do Screen.drawCircle(baseX + 60, baseY - 110, 10);
         return;
     }
 
-    method void drawStage5(){
+    method void drawBody() {
         do Screen.drawLine(baseX + 60, baseY - 120, baseX + 60,  baseY - 40);
         return;
     }
 
-    method void drawStage6(){
+    method void drawArms() {
         do Screen.drawLine(baseX + 60, baseY - 100, baseX + 35,  baseY - 80);
         do Screen.drawLine(baseX + 60, baseY - 100, baseX + 85,  baseY - 80);
         return;
     }
 
-        method void drawStage7(){
+        method void drawLegs() {
         do Screen.drawLine(baseX + 60,  baseY - 40, baseX + 30,  baseY - 60);
         do Screen.drawLine(baseX + 60, baseY - 40, baseX + 90,  baseY - 60);
-        return;
-    }
-
-
-    method void reset() {
-        do Screen.setColor(false);         
-        do Screen.drawRectangle(baseX, baseY, baseX + 10, baseY + 2); 
-        do Screen.drawLine(baseX + 5, baseY, baseX + 5, baseY - 10); 
-        do Screen.drawLine(baseX + 5, baseY - 10, baseX + 10, baseY - 10);
-        do Screen.drawLine(baseX + 10, baseY - 10, baseX + 10, baseY - 8); 
-
-        let stage = 0;
-
-        do drawNextStage();
-    
-        return;
-    }
-
-    method void dispose() {
-        do Memory.deAlloc(this);
         return;
     }
 }
